@@ -17,6 +17,11 @@ public class Continue extends AppCompatActivity {
 
     Button remove,sub,d1,d2,d3,d4,d5,d6,d7,d8,d9,d0;
 
+    int imagearray[] = {R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,
+            R.drawable.p6,R.drawable.p7,R.drawable.p8,R.drawable.p9,R.drawable.p10};
+
+    String[] ans = {"1","2","3","4","5","6","7","8","9","0"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,8 @@ public class Continue extends AppCompatActivity {
         setContentView(R.layout.activity_continue);
 
         String s = getIntent().getStringExtra("nothing");
+
+
 
         txt = findViewById(R.id.anstext);
 
@@ -60,6 +67,8 @@ public class Continue extends AppCompatActivity {
 
     }
 
+   Double firstvalue = 0.0;
+
     private void setbutton(Button btn, String s) {
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +83,10 @@ public class Continue extends AppCompatActivity {
                         txt.setText(txt.getText().toString().substring(0, txt.getText().toString().length() - 1));
                     }
                 }
-
+              else
+                {
+                    txt.setText(txt.getText().toString().concat(s));
+                }
 
             }
         });
