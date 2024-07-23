@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView txt1,txt2,txt3;
 
-
+int h;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent d= new Intent(MainActivity.this,Continue.class);
 
-                d.putExtra("kd","nothing");
+                d.putExtra("kd","nothing").putExtra("dp",h);
+
                 startActivity(d);
             }
         });

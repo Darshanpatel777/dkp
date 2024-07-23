@@ -1,8 +1,10 @@
 package com.example.mathpuzzles;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -10,12 +12,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager.widget.ViewPager;
 
 public class Continue extends AppCompatActivity {
 
+int t=0;
+
+    ViewPager vpager;
+
     TextView txt;
 
-    Button remove,sub,d1,d2,d3,d4,d5,d6,d7,d8,d9,d0;
+//    ImageView img;
+
+    Button remove,sub,d1,d2,d3,d4,d5,d6,d7,d8,d9,d0,skip;
 
     int imagearray[] = {R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,
             R.drawable.p6,R.drawable.p7,R.drawable.p8,R.drawable.p9,R.drawable.p10};
@@ -23,6 +32,7 @@ public class Continue extends AppCompatActivity {
     String[] ans = {"1","2","3","4","5","6","7","8","9","0"};
 
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +40,27 @@ public class Continue extends AppCompatActivity {
         setContentView(R.layout.activity_continue);
 
         String s = getIntent().getStringExtra("nothing");
+
+        int k = getIntent().getIntExtra("dp",0);
+
+        skip = findViewById(R.id.skip);
+
+        MyPagerAdapter pg = new MyPagerAdapter(this,imagearray);
+
+        vpager = findViewById(R.id.vpager);
+        vpager.setAdapter(pg);
+
+        vpager.setCurrentItem(k);
+        t = vpager.getCurrentItem();
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                t++;
+                vpager.setCurrentItem(t);
+
+            }
+        });
 
 
 
