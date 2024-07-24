@@ -1,6 +1,7 @@
 package com.example.mathpuzzles;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,21 +17,16 @@ import androidx.viewpager.widget.ViewPager;
 
 public class Continue extends AppCompatActivity {
 
-int t=0;
-
-    ViewPager vpager;
-
-    TextView txt;
-
-//    ImageView img;
-
-    Button remove,sub,d1,d2,d3,d4,d5,d6,d7,d8,d9,d0,skip;
+    ImageView puz;
+    TextView txt,bord;
+    Button remove,d1,d2,d3,d4,d5,d6,d7,d8,d9,d0,sub,skip;
 
     int imagearray[] = {R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,
             R.drawable.p6,R.drawable.p7,R.drawable.p8,R.drawable.p9,R.drawable.p10};
 
-    String[] ans = {"1","2","3","4","5","6","7","8","9","0"};
+    String[] ans = {"1","2","3","4","5","6","7","8","9","10"};
 
+    int h=0;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -39,33 +35,12 @@ int t=0;
 
         setContentView(R.layout.activity_continue);
 
-        String s = getIntent().getStringExtra("nothing");
-
-        int k = getIntent().getIntExtra("dp",0);
-
-        skip = findViewById(R.id.skip);
-
-        MyPagerAdapter pg = new MyPagerAdapter(this,imagearray);
-
-        vpager = findViewById(R.id.vpager);
-        vpager.setAdapter(pg);
-
-        vpager.setCurrentItem(k);
-        t = vpager.getCurrentItem();
-
-        skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                t++;
-                vpager.setCurrentItem(t);
-
-            }
-        });
-
-
 
         txt = findViewById(R.id.anstext);
 
+        puz = findViewById(R.id.vpager);
+        skip = findViewById(R.id.skip);
+        bord = findViewById(R.id.levelbord);
         remove = findViewById(R.id.remove);
         sub = findViewById(R.id.sub);
         d1 = findViewById(R.id.one);
@@ -92,13 +67,40 @@ int t=0;
         setbutton (d9,"9");
         setbutton (d0,"0");
         setbutton (remove,"@drawable/delete");
-        setbutton (sub,"SUBMIT");
+
+        h = getIntent().getIntExtra("dp",0);
+
+
+        bord.setText("Puzzle" +  (h + 1));
+        puz.setBackgroundResource(imagearray[h]);
+
+
+        sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(txt.getText().equals(ans[h]))
+                {
+                    h++;
+                    startActivity(new Intent(Continue.this,winpager.class).putExtra("dp",h));
+                }
+            }
+        });
+
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                h++;
+                bord.setText("LEVEL" +  (h + 1));
+                puz.setBackgroundResource(imagearray[h]);
+            }
+        });
 
 
 
     }
 
-   Double firstvalue = 0.0;
 
     private void setbutton(Button btn, String s) {
 
