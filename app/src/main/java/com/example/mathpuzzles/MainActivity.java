@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         txt3 = findViewById(R.id.pro);
 
 
+        int h = getIntent().getIntExtra("dp",0);
+
+
         txt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 d.putExtra("dp",h);
 
                 startActivity(d);
+
             }
         });
 

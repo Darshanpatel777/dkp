@@ -97,10 +97,7 @@ public class Continue extends AppCompatActivity {
             }
         });
 
-
-
     }
-
 
     private void setbutton(Button btn, String s) {
 
