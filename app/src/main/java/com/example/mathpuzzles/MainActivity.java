@@ -36,11 +36,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent d= new Intent(MainActivity.this,Continue.class);
-
                 d.putExtra("dp",h);
-
                 startActivity(d);
+            }
+        });
 
+        txt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent d= new Intent(MainActivity.this,level.class);
+                d.putExtra("dp",h);
+                startActivity(d);
             }
         });
 

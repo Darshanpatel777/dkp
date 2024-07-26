@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".winpager">
 
 
     <TextView
         android:id="@+id/complete"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#120BDC"
-        android:textSize="35dp"
         android:layout_margin="20sp"
+        android:textColor="#120BDC"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -36,9 +36,9 @@
         android:id="@+id/con"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:background="@drawable/rdd1"
         android:text="  CONTINUE  "
-        android:layout_marginTop="50dp"
         android:textColor="#000000"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -50,11 +50,11 @@
         android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rdd1"
         android:text="  MAIN MENU  "
         android:textColor="#000000"
         android:textSize="35sp"
-        android:layout_marginTop="10dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,15 +64,15 @@
         android:id="@+id/textview3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rdd1"
         android:text="  BUY PRO  "
         android:textColor="#000000"
         android:textSize="35sp"
-        android:layout_marginTop="10dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu"/>
+        app:layout_constraintTop_toBottomOf="@+id/menu" />
 
     <TextView
         android:id="@+id/textviwe3"
@@ -85,18 +85,21 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview3"/>
+        app:layout_constraintTop_toBottomOf="@+id/textview3" />
 
     <TextView
         android:id="@+id/share"
         android:layout_width="50dp"
-        android:layout_marginTop="20sp"
         android:layout_height="50dp"
-        android:background="@drawable/rdd1"
-        android:text=""
+        android:layout_marginTop="20sp"
+        android:background="@drawable/shareus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textviwe3" />
 
+<!--    <GridView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:numColumns="4"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class winpager extends AppCompatActivity {
 
 
-    TextView complete,con,menu;
+    TextView complete,con,menu,share;
 
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -31,6 +31,7 @@ public class winpager extends AppCompatActivity {
         complete = findViewById(R.id.complete);
         con = findViewById(R.id.con);
         menu = findViewById(R.id.menu);
+        share = findViewById(R.id.share);
 
 
 
@@ -39,11 +40,12 @@ public class winpager extends AppCompatActivity {
         complete.setText(" LEVEL " + h + " COMPLETED ");
 
 
-        complete.setOnClickListener(new View.OnClickListener() {
+        con.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 startActivity(new Intent(winpager.this,Continue.class).putExtra("dp",h));
+                finish();
             }
         });
 

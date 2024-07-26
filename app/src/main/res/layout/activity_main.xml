@@ -13,7 +13,7 @@
         android:id="@+id/textviwe2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Math puzzles"
+        android:text="Math Puzzles"
         android:textColor="#120BDC"
         android:textSize="35dp"
         android:layout_margin="20dp"

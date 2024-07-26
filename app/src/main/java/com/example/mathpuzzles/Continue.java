@@ -83,6 +83,7 @@ public class Continue extends AppCompatActivity {
                 {
                     h++;
                     startActivity(new Intent(Continue.this,winpager.class).putExtra("dp",h));
+                    finish();
                 }
             }
         });
