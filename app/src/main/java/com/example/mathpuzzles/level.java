@@ -15,7 +15,7 @@ public class level extends AppCompatActivity {
 
     GridView list;
 
-    String array[];
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,10 +27,7 @@ public class level extends AppCompatActivity {
         list = findViewById(R.id.list);
 
 
-
-        int h=  getIntent().getIntExtra("dp",0);
-
-        Myclass ns = new Myclass(array,level.this);
+        Myclass ns = new Myclass(level.this);
         list.setAdapter(ns);
 
     }

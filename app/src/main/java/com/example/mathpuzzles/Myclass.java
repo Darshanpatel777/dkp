@@ -1,6 +1,10 @@
 package com.example.mathpuzzles;
 
+import static com.example.mathpuzzles.MainActivity.edit;
+import static com.example.mathpuzzles.MainActivity.lock;
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +15,11 @@ import android.widget.TextView;
 public class Myclass extends BaseAdapter {
 
 
-    public Myclass(String[] array, com.example.mathpuzzles.level level) {
+    public Myclass( com.example.mathpuzzles.level level) {
 
         this.level = level;
     }
-
     level level;
-
 
     @Override
     public int getCount() {
@@ -39,12 +41,38 @@ public class Myclass extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent)
     {
         TextView txx;
-
         convertView = LayoutInflater.from(level).inflate(R.layout.leve,parent,false);
 
         txx = convertView.findViewById(R.id.txx);
 
-        txx.setBackgroundResource(R.drawable.lock);
+        if(MainActivity.sp.getString("key" +position,"").equals(MainActivity.com))
+        {
+            txx.setBackgroundResource(R.drawable.tick);
+            txx.setText("" + (position + 1));
+        }
+        else if(MainActivity.sp.getString("key" +position,"").equals(MainActivity.skip))
+        {
+            txx.setText("" + ( position + 1));
+        }
+        else
+        {
+            txx.setBackgroundResource(R.drawable.lock);
+        }
+//        new*
+
+//        lock mate
+        txx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if ( !MainActivity.sp.getString("key"+ position,"").equals(MainActivity.lock))
+                {
+                    Intent d = new Intent(level, Continue.class);
+                    d.putExtra("level", position);
+                    level.startActivity(d);
+                }
+            }
+        });
 
 
 

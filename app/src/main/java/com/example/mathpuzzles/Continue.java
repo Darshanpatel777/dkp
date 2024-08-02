@@ -1,5 +1,7 @@
 package com.example.mathpuzzles;
 
+import static com.example.mathpuzzles.MainActivity.edit;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,9 +24,9 @@ public class Continue extends AppCompatActivity {
     Button remove,d1,d2,d3,d4,d5,d6,d7,d8,d9,d0,sub,skip;
 
     int imagearray[] = {R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4,R.drawable.p5,
-            R.drawable.p6,R.drawable.p7,R.drawable.p8,R.drawable.p9,R.drawable.p10};
+            R.drawable.p6,R.drawable.p7,R.drawable.p8,R.drawable.p9,R.drawable.p10,R.drawable.p11};
 
-    String[] ans = {"1","2","3","4","5","6","7","8","9","10"};
+    String[] ans = {"1","2","3","4","5","6","7","8","9","10","11"};
 
     int h=0;
 
@@ -68,7 +70,7 @@ public class Continue extends AppCompatActivity {
         setbutton (d0,"0");
         setbutton (remove,"@drawable/delete");
 
-        h = getIntent().getIntExtra("dp",0);
+        h = getIntent().getIntExtra("level",0);
 
 
         bord.setText("Puzzle" +  (h + 1));
@@ -81,8 +83,12 @@ public class Continue extends AppCompatActivity {
 
                 if(txt.getText().equals(ans[h]))
                 {
+                    edit.putString("key" +h,MainActivity.com);
                     h++;
-                    startActivity(new Intent(Continue.this,winpager.class).putExtra("dp",h));
+                    edit.putInt("value",h);
+                    edit.apply();
+
+                    startActivity(new Intent(Continue.this,winpager.class).putExtra("level",h));
                     finish();
                 }
             }
@@ -92,7 +98,11 @@ public class Continue extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                edit.putString("key" +h,MainActivity.skip);
                 h++;
+                edit.putInt("value",h);
+                edit.apply();
                 bord.setText("LEVEL" +  (h + 1));
                 puz.setBackgroundResource(imagearray[h]);
             }

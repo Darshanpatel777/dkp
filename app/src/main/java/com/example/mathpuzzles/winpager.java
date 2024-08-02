@@ -18,6 +18,8 @@ public class winpager extends AppCompatActivity {
 
     TextView complete,con,menu,share;
 
+    int h=0;
+
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -35,7 +37,7 @@ public class winpager extends AppCompatActivity {
 
 
 
-        int h = getIntent().getIntExtra("dp",0);
+         h = getIntent().getIntExtra("level",0);
 
         complete.setText(" LEVEL " + h + " COMPLETED ");
 
@@ -44,7 +46,7 @@ public class winpager extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(winpager.this,Continue.class).putExtra("dp",h));
+                startActivity(new Intent(winpager.this,Continue.class).putExtra("level",h));
                 finish();
             }
         });
@@ -54,9 +56,11 @@ public class winpager extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                startActivity(new Intent(winpager.this,MainActivity.class).putExtra("dp",h));
+                startActivity(new Intent(winpager.this,MainActivity.class));
             }
         });
+
+
 
     }
 }
