@@ -4,6 +4,7 @@ import static com.example.mathpuzzles.MainActivity.edit;
 import static com.example.mathpuzzles.MainActivity.lock;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,12 @@ import android.widget.TextView;
 
 public class Myclass extends BaseAdapter {
 
+    Context context;
 
-    public Myclass( com.example.mathpuzzles.level level) {
+    public Myclass(Context context) {
 
-        this.level = level;
+        this.context = context;
     }
-    level level;
 
     @Override
     public int getCount() {
@@ -33,29 +34,27 @@ public class Myclass extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return (long)position;
+        return (long) position;
     }
 
     @SuppressLint("ResourceType")
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         TextView txx;
-        convertView = LayoutInflater.from(level).inflate(R.layout.leve,parent,false);
+        convertView = LayoutInflater.from(context).inflate(R.layout.leve, parent, false);
 
         txx = convertView.findViewById(R.id.txx);
 
-        if(MainActivity.sp.getString("key" +position,"").equals(MainActivity.com))
-        {
+        if (MainActivity.sp.getString("key" + position, "").equals(MainActivity.com)) {
             txx.setBackgroundResource(R.drawable.tick);
             txx.setText("" + (position + 1));
-        }
-        else if(MainActivity.sp.getString("key" +position,"").equals(MainActivity.skip))
-        {
-            txx.setText("" + ( position + 1));
-        }
-        else
-        {
+        } else if (MainActivity.sp.getString("key" + position, "").equals(lock) &&
+                MainActivity.sp.getString("key" + (position - 1), "").equals(MainActivity.com)) {
+            txx.setText("" + (position + 1));
+
+        } else if (MainActivity.sp.getString("key" + position, "").equals(MainActivity.skip)) {
+            txx.setText("" + (position + 1));
+        } else {
             txx.setBackgroundResource(R.drawable.lock);
         }
 //        new*
@@ -65,15 +64,14 @@ public class Myclass extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                if ( !MainActivity.sp.getString("key"+ position,"").equals(MainActivity.lock))
-                {
-                    Intent d = new Intent(level, Continue.class);
+                if (!MainActivity.sp.getString("key" + position, "").equals(MainActivity.lock) ||
+                        MainActivity.sp.getString("key" + (position - 1), "").equals(MainActivity.com)) {
+                    Intent d = new Intent(context, Continue.class);
                     d.putExtra("level", position);
-                    level.startActivity(d);
+                    context.startActivity(d);
                 }
             }
         });
-
 
 
         return convertView;
